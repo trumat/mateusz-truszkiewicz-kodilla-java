@@ -11,17 +11,12 @@ public class Square implements Shape {
 
     @Override
     public double getArea() {
-        return 0;
+        return side * side;
     }
 
     @Override
     public String getShapeName() {
-        return null;
-    }
-
-    @Override
-    public String toString(){
-        return null;
+        return "Square";
     }
 
     @Override

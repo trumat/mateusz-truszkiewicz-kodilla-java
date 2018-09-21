@@ -26,7 +26,7 @@ public class ShapeCollectorTestSuite {
         collector.addFigure(circle);
         collector.addFigure(circle2);
         collector.removeFigure(circle);
-        Shape retrievedCircle = circle;
+        Shape retrievedCircle = collector.getFigure(0);
         //Then
         Assert.assertEquals(circle2, retrievedCircle);
     }
