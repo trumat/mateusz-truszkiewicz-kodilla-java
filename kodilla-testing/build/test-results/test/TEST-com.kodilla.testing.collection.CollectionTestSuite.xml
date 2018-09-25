@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.testing.collection.CollectionTestSuite" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-09-25T10:47:49" hostname="mateusz-ThinkPad-X220" time="0.002">
+  <properties/>
+  <testcase name="testOddNumbersEmptyList" classname="com.kodilla.testing.collection.CollectionTestSuite" time="0.001"/>
+  <testcase name="testOddNumbersNormalList" classname="com.kodilla.testing.collection.CollectionTestSuite" time="0.001"/>
+  <system-out><![CDATA[Test case start
+Test case end
+Test case start
+Test case end
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
