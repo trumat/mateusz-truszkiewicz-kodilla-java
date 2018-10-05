@@ -3,7 +3,7 @@ package com.kodilla.exception.test;
 import java.util.HashMap;
 
 public class FlightFinder {
-    public void findFlight(Flight flight) throws RouteNotFoundException{
+    private void findFlight(Flight flight) throws RouteNotFoundException{
         HashMap<String, Boolean> flightMap = new HashMap<>();
         flightMap.put("Warsaw", true);
         flightMap.put("Prague", false);
