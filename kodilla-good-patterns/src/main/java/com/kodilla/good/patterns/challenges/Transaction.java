@@ -37,17 +37,4 @@ public class Transaction {
     public LocalDate getTransactionDate() {
         return transactionDate;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Transaction that = (Transaction) o;
-        return Objects.equals(transactionID, that.transactionID);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(transactionID);
-    }
 }
