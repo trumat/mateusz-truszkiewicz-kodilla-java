@@ -9,11 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
+    @Autowired
+    EmployeeDao employeeDao;
 
     @Test
     public void testSaveManyToMany(){
@@ -58,6 +62,69 @@ public class CompanyDaoTestSuite {
             companyDao.delete(greyMatterId);
         } catch (Exception e) {
             //do nothing
+        }
+    }
+
+    @Test
+    public void testRetrieveWithLastName() {
+        //Given
+        Employee owenJones = new Employee("Owen", "Jones");
+        Employee margaretJones = new Employee("Margaret", "Jones");
+        Employee sarahMacintyre = new Employee("Sarah", "MacIntyre");
+
+        //When
+        employeeDao.save(owenJones);
+        employeeDao.save(margaretJones);
+        employeeDao.save(sarahMacintyre);
+
+        int owenJonesId = owenJones.getId();
+        int margaretJonesId = margaretJones.getId();
+        int sarahMacintyreId = sarahMacintyre.getId();
+
+        List<Employee> readEmployees = employeeDao.retrieveWithLastName("Jones");
+
+        //Then
+        Assert.assertEquals(2, readEmployees.size());
+
+        //CleanUp
+
+        try {
+            employeeDao.delete(owenJonesId);
+            employeeDao.delete(margaretJonesId);
+            employeeDao.delete(sarahMacintyreId);
+        } catch (Exception e) {
+            //Do nothing
+        }
+    }
+
+    @Test
+    public void testRetrieveNameStartingWith() {
+        //Given
+        Company successfulIndustries = new Company("Successful Industries");
+        Company futureTech = new Company("FutureTech");
+        Company futureCorp = new Company("FutureCorp");
+
+        //When
+        companyDao.save(successfulIndustries);
+        companyDao.save(futureTech);
+        companyDao.save(futureCorp);
+
+        int successfulIndustriesId = successfulIndustries.getId();
+        int futureTechId = futureTech.getId();
+        int futureCorpId = futureCorp.getId();
+
+        List<Company> readCompanies = companyDao.retrieveNameStartingWith("Fut");
+
+        //Then
+        Assert.assertEquals(2, readCompanies.size());
+
+        //CleanUp
+        try {
+            companyDao.delete(successfulIndustriesId);
+            companyDao.delete(futureTechId);
+            companyDao.delete(futureCorpId);
+        } catch (Exception e) {
+            //Do nothing
         }
     }
 }
