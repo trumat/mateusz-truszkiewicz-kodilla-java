@@ -30,10 +30,12 @@ public class InvoiceDaoTestSuite {
         Item item1 = new Item(cup, new BigDecimal(6.5), 3, new BigDecimal(3), invoice);
         Item item2 = new Item(glass, new BigDecimal(5), 6, new BigDecimal(2.5), invoice);
         Item item3 = new Item(plate, new BigDecimal(4), 2, new BigDecimal(2), invoice);
+        Item item4 = new Item(plate, new BigDecimal(5.5), 10, new BigDecimal(2), invoice);
 
         invoice.getItems().add(item1);
         invoice.getItems().add(item2);
         invoice.getItems().add(item3);
+        invoice.getItems().add(item4);
 
         //When
         invoiceDao.save(invoice);
